@@ -39,16 +39,13 @@ def collatz_length (num) :
     """
     assert num > 0
 
-    length = 1
-    while num > 1 :
+    if num == 1 :
+        return 1
+    else :
         if num % 2 == 0 :
-            num = num / 2
+            return collatz_length (num/2) + 1
         else :
-            num = num*3 + 1
-        length = length + 1
-
-    assert length > 0
-    return length
+            return collatz_length (num*3 + 1) + 1
 
 # ------------
 # collatz_eval
