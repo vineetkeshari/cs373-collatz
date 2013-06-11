@@ -21,6 +21,8 @@ def collatz_read (r, a) :
     if s == "" :
         return False
     l = s.split()
+    if len(l) < 2 :
+        return False
     a[0] = int(l[0])
     a[1] = int(l[1])
     assert a[0] > 0
