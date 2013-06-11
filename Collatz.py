@@ -59,7 +59,7 @@ def collatz_eval (i, j) :
     return the max cycle length in the range [i, j]
     """
     assert i > 0
-    assert j > 0
+    assert i <= j
     
     v = 1
     for num in range (i, j+1) :
