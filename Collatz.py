@@ -50,7 +50,7 @@ def collatz_length (num) :
             if num % 2 == 0 :
                 length = collatz_length (num/2) + 1
             else :
-                length =  collatz_length (num*3 + 1) + 1
+                length =  collatz_length ((num*3 + 1)/2) + 2
         assert length > 0
         collatz_cache[num] = length
         return length
