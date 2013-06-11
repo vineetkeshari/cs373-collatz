@@ -28,6 +28,27 @@ def collatz_read (r, a) :
     return True
 
 # ------------
+# collatz_length
+# ------------
+
+def collatz_length (num) :
+    """
+    return the length of collatz sequence for num
+    """
+    assert num > 0
+
+    length = 1
+    while num > 1 :
+        if num % 2 == 0 :
+            num = num / 2
+        else :
+            num = num*3 + 1
+        length = length + 1
+
+    assert length > 0
+    return length
+
+# ------------
 # collatz_eval
 # ------------
 
@@ -39,8 +60,13 @@ def collatz_eval (i, j) :
     """
     assert i > 0
     assert j > 0
-    # <your code>
+    
     v = 1
+    for num in range (i, j+1) :
+        length = collatz_length (num)
+        if length > v :
+            v = length
+
     assert v > 0
     return v
 
