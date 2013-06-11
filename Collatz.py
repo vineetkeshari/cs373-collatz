@@ -10,6 +10,8 @@
 # collatz_read
 # ------------
 
+collatz_cache = {}
+
 def collatz_read (r, a) :
     """
     reads two ints into a[0] and a[1]
@@ -39,13 +41,19 @@ def collatz_length (num) :
     """
     assert num > 0
 
-    if num == 1 :
-        return 1
+    if num in collatz_cache :
+        return collatz_cache[num]
     else :
-        if num % 2 == 0 :
-            return collatz_length (num/2) + 1
+        if num == 1 :
+            length = 1
         else :
-            return collatz_length (num*3 + 1) + 1
+            if num % 2 == 0 :
+                length = collatz_length (num/2) + 1
+            else :
+                length =  collatz_length (num*3 + 1) + 1
+        assert length > 0
+        collatz_cache[num] = length
+        return length
 
 # ------------
 # collatz_eval
