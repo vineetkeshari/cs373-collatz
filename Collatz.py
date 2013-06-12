@@ -6,6 +6,7 @@
 # Glenn P. Downing
 # ---------------------------
 
+# Cache for storing collatz lengths of seen numbers
 collatz_cache = {}
 
 # ------------
@@ -15,6 +16,7 @@ collatz_cache = {}
 def collatz_read (r, a) :
     """
     reads two ints into a[0] and a[1]
+    
     r is a  reader
     a is an array of int
     return true if that succeeds, false otherwise
@@ -37,7 +39,10 @@ def collatz_read (r, a) :
 
 def collatz_length (num) :
     """
-    return the length of collatz sequence for num
+    returns the length of collatz sequence for a number
+    
+    num is the number we need the collatz length for
+    looks up and adds values to collatz_cache
     """
     assert num > 0
 
@@ -61,9 +66,11 @@ def collatz_length (num) :
 
 def collatz_eval (i, j) :
     """
+    return the max cycle length in the range [i, j]
+    
     i is the beginning of the range, inclusive
     j is the end       of the range, inclusive
-    return the max cycle length in the range [i, j]
+    i and j are swapped if they are in the wrong order
     """
     assert i > 0
     assert j > 0
@@ -89,6 +96,7 @@ def collatz_eval (i, j) :
 def collatz_print (w, i, j, v) :
     """
     prints the values of i, j, and v
+    
     w is a writer
     i is the beginning of the range, inclusive
     j is the end       of the range, inclusive
@@ -103,6 +111,7 @@ def collatz_print (w, i, j, v) :
 def collatz_solve (r, w) :
     """
     read, eval, print loop
+    
     r is a reader
     w is a writer
     """
