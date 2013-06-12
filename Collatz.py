@@ -6,11 +6,11 @@
 # Glenn P. Downing
 # ---------------------------
 
+collatz_cache = {}
+
 # ------------
 # collatz_read
 # ------------
-
-collatz_cache = {}
 
 def collatz_read (r, a) :
     """
@@ -66,6 +66,11 @@ def collatz_eval (i, j) :
     return the max cycle length in the range [i, j]
     """
     assert i > 0
+    assert j > 0
+    if i > j :
+        t = i
+        i = j
+        j = t
     assert i <= j
     
     v = 1
